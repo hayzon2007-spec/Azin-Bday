@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Music Room ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+background-size:cover;
+
+background-position:center;
+
+transition:1s;
+
+overflow:hidden;
+
+}
+
+.overlay{
+
+position:absolute;
+
+inset:0;
+
+background:rgba(0,0,0,.45);
+
+}
+
+.card{
+
+position:relative;
+
+z-index:5;
+
+width:90%;
+
+max-width:650px;
+
+padding:40px;
+
+background:rgba(255,255,255,.18);
+
+backdrop-filter:blur(18px);
+
+border-radius:25px;
+
+text-align:center;
+
+color:white;
+
+box-shadow:0 10px 30px rgba(0,0,0,.25);
+
+}
+
+h1{
+
+font-family:'Dancing Script',cursive;
+
+font-size:58px;
+
+margin-bottom:15px;
+
+}
+
+h2{
+
+margin-top:20px;
+
+font-size:34px;
+
+}
+
+p{
+
+margin-top:10px;
+
+opacity:.9;
+
+}
+
+button{
+
+margin:12px;
+
+padding:14px 28px;
+
+border:none;
+
+border-radius:40px;
+
+cursor:pointer;
+
+background:#ff4f91;
+
+color:white;
+
+font-size:16px;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+transform:scale(1.05);
+
+}
+
+.progress{
+
+margin-top:20px;
+
+font-size:18px;
+
+}
+
+#nextPage{
+
+display:none;
+
+text-decoration:none;
+
+background:#7a3cff;
+
+padding:15px 30px;
+
+border-radius:40px;
+
+color:white;
+
+margin-top:25px;
+
+display:inline-block;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<div class="card">
+
+<h1>🎵 Music Room</h1>
+
+<p>This playlist reminded me of you ❤️</p>
+
+<h2 id="title"></h2>
+
+<p id="quote"></p>
+
+<audio id="audio" controls style="margin-top:20px;width:100%;"></audio>
+
+<div>
+
+<button onclick="prevSong()">◀ Previous</button>
+
+<button onclick="nextSong()">Next ▶</button>
+
+</div>
+
+<div class="progress" id="progress"></div>
+
+<a href="surprise.html" id="nextPage">
+Continue to Surprise ❤️
+</a>
+
+</div>
+
+<script>
+
+const songs=[
+
+{
+title:"Kattu Mooliyo",
+quote:"A calm beginning to this little journey.",
+bg:"images/sunset.jpg",
+music:"music/kattu-mooliyo.mp3"
+},
+
+{
+title:"Pularaan Neram",
+quote:"Some songs feel like peaceful nights.",
+bg:"images/moon.jpg",
+music:"music/pularaan-neram.mp3"
+},
+
+{
+title:"Kadhal Aasai",
+quote:"Every melody has a memory.",
+bg:"images/rose.jpg",
+music:"music/kadhal-aasai.mp3"
+},
+
+{
+title:"Neelambalin",
+quote:"Soft... peaceful... beautiful.",
+bg:"images/blue.jpg",
+music:"music/neelambalin.mp3"
+},
+
+{
+title:"Dheema",
+quote:"Some moments deserve to slow down.",
+bg:"images/purple.jpg",
+music:"music/dheema.mp3"
+},
+
+{
+title:"Kadhaippoma",
+quote:"Every conversation matters.",
+bg:"images/rain.jpg",
+music:"music/kadhaippoma.mp3"
+},
+
+{
+title:"Oorum Blood",
+quote:"A different mood... but unforgettable.",
+bg:"images/red.jpg",
+music:"music/oorum-blood.mp3"
+},
+
+{
+title:"Nanavere",
+quote:"A perfect ending to this playlist.",
+bg:"images/galaxy.jpg",
+music:"music/nanavere.mp3"
+}
+
+];
+
+let current=0;
+
+const title=document.getElementById("title");
+const quote=document.getElementById("quote");
+const audio=document.getElementById("audio");
+const progress=document.getElementById("progress");
+
+function loadSong(){
+
+let s=songs[current];
+
+title.innerHTML=s.title;
+
+quote.innerHTML=s.quote;
+
+audio.src=s.music;
+
+document.body.style.backgroundImage=`url('${s.bg}')`;
+
+progress.innerHTML=`❤️ ${current+1} / ${songs.length} ❤️`;
+
+if(current==songs.length-1){
+
+document.getElementById("nextPage").style.display="inline-block";
+
+}else{
+
+document.getElementById("nextPage").style.display="none";
+
+}
+
+}
+
+function nextSong(){
+
+if(current<songs.length-1){
+
+current++;
+
+loadSong();
+
+}
+
+}
+
+function prevSong(){
+
+if(current>0){
+
+current--;
+
+loadSong();
+
+}
+
+}
+
+loadSong();
+
+</script>
+
+</body>
+</html>

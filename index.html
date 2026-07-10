@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secret Garden 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+background:linear-gradient(-45deg,#ffd6ec,#f3d5ff,#d9d6ff,#ffe4f2);
+
+background-size:400% 400%;
+
+animation:bg 10s ease infinite;
+
+overflow:hidden;
+
+}
+
+@keyframes bg{
+
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+
+}
+
+.card{
+
+width:90%;
+max-width:430px;
+
+padding:45px;
+
+background:rgba(255,255,255,.18);
+
+backdrop-filter:blur(18px);
+
+border-radius:25px;
+
+text-align:center;
+
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+
+z-index:5;
+
+}
+
+h1{
+
+font-family:'Dancing Script',cursive;
+
+font-size:55px;
+
+color:#ff4f91;
+
+margin-bottom:10px;
+
+}
+
+.quote{
+
+color:#666;
+
+margin-bottom:15px;
+
+font-size:16px;
+
+}
+
+.hint{
+
+font-size:20px;
+
+font-weight:bold;
+
+color:#7a3cff;
+
+margin-bottom:25px;
+
+}
+
+input{
+
+width:100%;
+
+padding:15px;
+
+border:none;
+
+outline:none;
+
+border-radius:15px;
+
+font-size:18px;
+
+text-align:center;
+
+margin-bottom:20px;
+
+}
+
+button{
+
+width:100%;
+
+padding:15px;
+
+border:none;
+
+border-radius:40px;
+
+background:#ff4f91;
+
+color:white;
+
+font-size:18px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+transform:scale(1.05);
+
+background:#ff2d7d;
+
+}
+
+#error{
+
+margin-top:18px;
+
+color:red;
+
+font-weight:bold;
+
+}
+
+.hearts span{
+
+position:absolute;
+
+bottom:-50px;
+
+font-size:22px;
+
+animation:float linear infinite;
+
+}
+
+@keyframes float{
+
+0%{
+
+transform:translateY(0);
+
+opacity:0;
+
+}
+
+10%{
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(-120vh);
+
+opacity:0;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="hearts"></div>
+
+<div class="card">
+
+<h1>🔐 Secret Garden</h1>
+
+<p class="quote">
+
+💌 Only someone special knows the answer...
+
+</p>
+
+<p class="hint">
+
+🌸 Hint: Who am I?
+
+</p>
+
+<input
+type="password"
+id="pass"
+placeholder="Enter Password">
+
+<button onclick="check()">
+
+Enter ❤️
+
+</button>
+
+<p id="error"></p>
+
+</div>
+
+<script>
+
+const hearts=document.querySelector(".hearts");
+
+for(let i=0;i<35;i++){
+
+let h=document.createElement("span");
+
+h.innerHTML="💖";
+
+h.style.left=Math.random()*100+"vw";
+
+h.style.animationDuration=(5+Math.random()*6)+"s";
+
+h.style.animationDelay=Math.random()*5+"s";
+
+hearts.appendChild(h);
+
+}
+
+function check(){
+
+let password=document.getElementById("pass").value.trim();
+
+if(password.toLowerCase()=="agunu"){
+
+window.location.href="home.html";
+
+}else{
+
+document.getElementById("error").innerHTML="❌ Hmm... Try again ❤️";
+
+}
+
+}
+
+document.getElementById("pass").addEventListener("keypress",function(e){
+
+if(e.key==="Enter"){
+
+check();
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
